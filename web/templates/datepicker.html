@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='jquery.datetimepicker.css') }}"/>
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='w3.css') }}"/>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" target="_blank"/>
+<style type="text/css">
+
+/*CSS codes from http://www.w3schools.com/css/*/
+
+input{
+    padding: 12px 24px;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+</style>
+	<title> Date Picker </title>
+</head>
+
+<body>
+
+<center>	
+<h2>Select start and end date-time</h2>
+
+<form action="/datepicker" method="post">
+<input type="text" name="start" class="some_class" value="Start Date-Time" id="start_time"/>
+
+<input type="text" name="stop" class="some_class" value="End Date-Time" id="end_time"/>
+<input type="submit" value="Download"></input>
+</form>
+
+<input type="button" onclick="$('#start_time').datetimepicker({value:'2000-01-01 0:00'})" value="Set Inline Value 2000-01-01 00:00"/>
+
+<input type="button" onclick="$('#end_time').datetimepicker({value:'2000-01-01 0:00'})" value="Set Inline Value 2000-01-01 00:00"/>
+
+<br>
+<br>
+<a href="{{ url_for('index') }}"><button class="w3-btn w3-teal w3-large">Home<i class="w3-margin-left fa fa-home"></i></button>
+</a>
+</center>
+
+<div class="flashes">
+  {% for message in get_flashed_messages() %}
+    {{ message }}
+  {% endfor %}
+</div>
+
+</body>
+
+<script src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='jquery.datetimepicker.full.js') }}"></script>
+<script>
+
+$('.some_class').datetimepicker();
+
+</script>
+</html>

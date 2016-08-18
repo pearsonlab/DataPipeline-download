@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--style codes from w3 school: http://www.w3schools.com/howto/howto_js_dropdown.asp-->
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+</style>
+<title>Home</title>
+</head>
+
+<body>
+
+
+<center><h1>AWS Data Download Module</h1>
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<h3><p>You can download the files by either using date-time range, participant ID or name of the task.</p>
+<p>Click the button below to open the dropdown menu.</p></h3>
+
+	<div class="dropdown">
+  		<button onclick="myFunction()" class="dropbtn">Criteria</button>
+  		<div id="myDropdown" class="dropdown-content">
+    	<a href="{{ url_for('datepicker') }}">Date-Time range</a>
+    	<a href="{{ url_for('participant') }}">Participant ID</a>
+    	<a href="{{ url_for('task') }}">Name of the Task</a>
+  		</div>
+	</div>
+</center>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

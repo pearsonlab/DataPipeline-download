@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='w3.css') }}"/>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" target="_blank"/>
+<style type="text/css">
+/*CSS codes from http://www.w3schools.com/css/*/
+
+input{
+    padding: 12px 24px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+</style>
+	<title> Name of Task</title>
+</head>
+
+<body>
+<center>
+<h2>Enter name of the task</h2>
+	<form action="/task" method="post">
+  	<input type="text" name="task"></input>
+  	<input type="submit" value="Download"></input>
+	</form>
+<br>
+
+<a href="{{ url_for('index') }}"><button class="w3-btn w3-teal w3-large">Home<i class="w3-margin-left fa fa-home"></i></button></a>
+</center>
+</body>
+</html>
