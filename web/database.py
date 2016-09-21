@@ -55,8 +55,8 @@ def timeRange(start, stop):
     conn = rds_handler()
     with conn.cursor() as cur:
         cur = conn.cursor()
-        query = ("SELECT ObjectKey, StartTime, StopTime FROM edfPatientInfo WHERE StartTime >= %s AND StopTime <= %s")
-        cur.execute(query, (start, stop))
+        query = ("SELECT ObjectKey, StartTime, StopTime FROM edfPatientInfo WHERE (StartTime between %s and %s) or (StopTime between %s and %s) or (StartTime <= %s AND StopTime >= %s) or (StartTime <= %s AND StopTime >= %s)")
+        cur.execute(query, (start, stop, start, stop, start, start, stop, stop))
         data = cur.fetchall()
         if not data:
         	print("There are no data in this range")
