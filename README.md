@@ -15,3 +15,8 @@ Instructions to download data files
     - Open [localhost:5000](localhost:5000) on your local browser and follow on the instructions on the webpage
     - Note: edf data files will be downloaded in s3_download folder of current directory, while behavioral data will be downloaded in s3_download/behavioral_data
     - After the downloads are completed, get back to the main directory and run stop.py (this stops the ec2 instance as well as deletes the db instance and saves a db snapshot)
+
+Instructions to combine chunk files to a edf file
+- All the downloaded edf data files are have .chn extension
+- Each chunk is of maximum 60 minutes, so most of the times we have to combine 2 chunk files.
+- To combine those files, run edfwriter.py passing in the directory of the folder where edf data files are stored as well as the destination along with name of the final edf file you want to write as
