@@ -19,4 +19,6 @@ Instructions to download data files
 Instructions to combine chunk files to a edf file
 - All the downloaded edf data files are have .chn extension
 - Each chunk consists data of maximum 60 minutes and most of the times we have to combine 2 chunk files to get information regarding particular task.
-- To combine those files, run edfwriter.py passing in the directory of the folder where edf data files are stored as well as the destination along with name of the final edf file you want to write as
+- To combine those files, run edfwriter.py passing in the directory of the folder where edf data files are stored as well as the destination along with name of the final edf file you want to write as.
+
+Note: [EDF specification](http://www.edfplus.info/specs/edf.html) was used for edf file information.
