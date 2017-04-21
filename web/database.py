@@ -14,7 +14,6 @@ import os.path
 import os
 import queryDynamo
 
-s3BucketEDF = rds_config.s3BucketEDF
 localFolder = rds_config.localFolder
 
 def rds_handler():
@@ -70,7 +69,8 @@ def timeRange(start, stop):
             startTime = i[1]
             stopTime = i[2]
             print("Downloading: ", objectKey, startTime, stopTime)
-            downloadFile(objectKey)
+            participantId = str(startTime.year)
+            downloadFile(objectKey, participantId)
             queryDynamo.timeRange(str(startTime), str(stopTime))
 
 # download using participant name
@@ -95,10 +95,11 @@ def patientID(participantId):
             startTime = i[1]
             stopTime = i[2]
             print("Downloading: ", objectKey, startTime, stopTime)
-            downloadFile(objectKey)
+            downloadFile(objectKey, participantId)
             queryDynamo.timeRange(str(startTime), str(stopTime))
 
-def downloadFile(fileObject):
+def downloadFile(fileObject, patientID):
+    s3BucketEDF = 'edf-chunks-'+str(patientID) #S3 bucket to download files from
     s3 = boto3.resource('s3')
     cwd = os.getcwd()
     folder = localFolder
@@ -110,17 +111,6 @@ def downloadFile(fileObject):
     else:
         s3.Object(s3BucketEDF, fileObject).download_file(download_destination)
         
-
-def dateTimeConvertor(day, time):
-    Hours = time
-    Minutes = 60 * (Hours % 1)
-    Seconds = 60 * (Minutes % 1)
-    timeq =  ("%d:%02d:%02d" % (Hours, Minutes, Seconds))
-    
-    start_date = "2000-01-01"
-    date_1 = datetime.datetime.strptime(start_date, "%Y-%m-%d")
-    end_date = date_1 + datetime.timedelta(days = day, hours = Hours, minutes = Minutes, seconds = Seconds)
-    return end_date
 
 if __name__ == '__main__':
     rds_handler()

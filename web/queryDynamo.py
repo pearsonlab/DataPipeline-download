@@ -12,6 +12,7 @@ client = boto3.client('dynamodb')
 
 tableName = dynamo_config.table_name
 s3Bucket = dynamo_config.s3_bucket
+
 # getting the json file based on the experiment name
 # passing date-time range for corresponding experiment's name
 def experimentName(exptName):
@@ -83,6 +84,3 @@ def downloadFile(fileObject):
         s3.Object(s3Bucket, fileObject).download_file(download_destination)
     else:
         s3.Object(s3Bucket, fileObject).download_file(download_destination)
-
-# if __name__ == '__main__':
-    # timeRange("2000-01-01 16:12:59","2000-01-01 17:12:59")

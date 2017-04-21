@@ -26,6 +26,10 @@ input[type=button], input[type=submit], input[type=reset] {
     font-size: 15px;
 }
 
+h3 {
+        color: #ff0000;
+}
+
 </style>
 
 	<title> Participant ID</title>
@@ -33,7 +37,8 @@ input[type=button], input[type=submit], input[type=reset] {
 
 <body>
 <center>
-<h2>Enter participant ID</h2>
+<h2>Enter patient ID (eg: 2002)</h2>
+<h3>Caution: this step will download more than 200 GB of files to your system</h3>
 	<form action="/participant" method="post">
   	<input type="text" name="participantId"></input>
   	<input type="submit" value="Download"></input>

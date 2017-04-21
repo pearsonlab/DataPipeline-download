@@ -53,5 +53,5 @@ def dateConverter(dateTime):
     return datetime.datetime.strptime(datetime, "%Y/%m/%d %H:%M")
 
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = False
     app.run()
